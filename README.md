@@ -1,1 +1,1 @@
-# SI_2023_lab2_196107
+Filip, Domazetovski 196107
