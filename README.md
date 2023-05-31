@@ -39,17 +39,18 @@ CONTROL FLOW GRAPH(CFG):
 | 12        | 1    | 1                  | 1               | null               | [User1, User2] |
 
 
-Објаснување :
+## Објаснување :
 
- За да обезбедиме тест случаи според критериумот Every Branch, треба да се осигураме дека секоја гранка на кодот е покриена со најмалку еден тест случај.
+# Every Branch
+ За да обезбедиме тест случаи според критериумот Every Branch, треба секоја гранка на кодот е покриена со тест случај.
 
-  Тест случај за задолжителни информации што недостасуваат (фрлање исклучок):
-        Влез:  user = null, allUsers = [User1, User2]
-        Очекуван излез: RuntimeException("Mandatory information missing!")
+   задолжителни информации што недостасуваат /фрлање исклучок:
+        В:  user = null, allUsers = [User1, User2]
+        И: RuntimeException("Mandatory information missing!")
 
   Тест случај за поставување на корисничко име на епошта кога корисничкото име е нула:
         В: user = User(email="example@example.com"), allUsers = [User1, User2]
-        И: user.getUsername() is equal to "example@example.com"
+        И: user.getUsername() =  "example@example.com"
   Тест случај за постоечки корисник со иста епошта, но различно корисничко име:
         Влез: user = User(username="example", email="example@example.com"), allUsers = [User1(email="example@example.com", username="different")]
         Очекуван излез: same = 0
@@ -58,11 +59,11 @@ CONTROL FLOW GRAPH(CFG):
         Влез:  user = User(username="example", email="example@example.com"), allUsers = [User1(email="example@example.com", username="example")]
         Очекуван излез: same = 2
 
-  Тест случај за лозинка која содржи корисничко име и должина помала од 8 (враќа неточно):
+  Тест случај за лозинка која содржи корисничко име и должина помала од 8 :
         Влез: user = User(username="example", email="example@example.com", password="example"), allUsers = [User1]
         Очекуван излез: false
 
-  Тест случај за лозинка што содржи специјален знак и без празно место:
+  Тест случај за лозинка што содржи специјален знак но без празно место:
         Внесување: user = User(username="example", email="example@example.com", password="example!123"), allUsers = [User1]
         Очекуван излез: false
 
@@ -70,7 +71,7 @@ CONTROL FLOW GRAPH(CFG):
         Внесување: user = User(username="example", email="example@example.com", password="example! 123"), allUsers = [User1]
         Очекуван излез: same = 0
         
-        За да обезбедиме тест случаи според критериумот Multiple Condition за условот „if (user==null || user.getPassword()==null || user.getEmail()==null)“, треба да ги разгледаме сите можни комбинации на условите:
+   # Multiple Condition за условот „if (user==null || user.getPassword()==null || user.getEmail()==null)“:
 
   Сите услови ќе се вистинити:
     Input: user = null, user.getPassword() = null, user.getEmail() = null
